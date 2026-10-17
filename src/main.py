@@ -1,12 +1,13 @@
 """
-TaskTracker - Gerenciador de Tarefas via Linha de Comando (CLI)
-Bootcamp II - Fase 2 (Entrega Intermediária)
+TaskTracker: Gerenciador de Tarefas via Linha de Comando (CLI)
+Bootcamp II, Fase 2 (Entrega Intermediária)
+Autor: Luiz Felipe Rocha | RA: 22604023
 
 Aplicação que permite cadastrar e visualizar tarefas, aplicando as regras
 de negócio definidas no planejamento lógico da Fase 1:
-  - Título obrigatório (não pode ser vazio nem conter apenas espaços)
-  - Prioridade restrita a "Alta", "Média" (ou "Media") e "Baixa"
-  - Status definido automaticamente como "Pendente" no cadastro
+  * Título obrigatório (não pode ser vazio nem conter apenas espaços)
+  * Prioridade restrita a "Alta", "Média" (ou "Media") e "Baixa"
+  * Status definido automaticamente como "Pendente" no cadastro
 """
 
 # Lista em memória que armazena todas as tarefas cadastradas.
@@ -26,9 +27,9 @@ PRIORIDADES_VALIDAS = {
 STATUS_INICIAL = "Pendente"
 
 
-# ---------------------------------------------------------------------------
+# ===========================================================================
 # Funções de validação (regras de negócio)
-# ---------------------------------------------------------------------------
+# ===========================================================================
 
 def ler_titulo():
     """Solicita o título até que seja informado um valor não vazio."""
@@ -48,13 +49,13 @@ def ler_prioridade():
         print("[ERRO] Prioridade inválida. Digite apenas Alta, Média (ou Media) ou Baixa.\n")
 
 
-# ---------------------------------------------------------------------------
+# ===========================================================================
 # Funcionalidades do menu
-# ---------------------------------------------------------------------------
+# ===========================================================================
 
 def cadastrar_tarefa():
     """Coleta os dados, aplica as validações e adiciona a tarefa na lista."""
-    print("\n--- CADASTRAR NOVA TAREFA ---")
+    print("\n=== CADASTRAR NOVA TAREFA ===")
     titulo = ler_titulo()
     descricao = input("Descrição: ").strip()
     prioridade = ler_prioridade()
@@ -73,7 +74,7 @@ def cadastrar_tarefa():
 
 def visualizar_tarefas():
     """Exibe todas as tarefas cadastradas ou avisa que a lista está vazia."""
-    print("\n--- TAREFAS CADASTRADAS ---")
+    print("\n=== TAREFAS CADASTRADAS ===")
     if not tarefas:
         print("Nenhuma tarefa cadastrada no momento.")
         return
