@@ -2,8 +2,11 @@
 TaskTracker - Gerenciador de Tarefas via Linha de Comando (CLI)
 Bootcamp II - Fase 2 (Entrega Intermediária)
 
-Aplicação que permite cadastrar e visualizar tarefas.
-Versão inicial: menu de navegação e loop principal.
+Aplicação que permite cadastrar e visualizar tarefas, aplicando as regras
+de negócio definidas no planejamento lógico da Fase 1:
+  - Título obrigatório (não pode ser vazio nem conter apenas espaços)
+  - Prioridade restrita a "Alta", "Média" (ou "Media") e "Baixa"
+  - Status definido automaticamente como "Pendente" no cadastro
 """
 
 # Lista em memória que armazena todas as tarefas cadastradas.
@@ -11,7 +14,38 @@ Versão inicial: menu de navegação e loop principal.
 # data_limite e status.
 tarefas = []
 
+# Prioridades aceitas. A chave é a entrada normalizada (minúsculas)
+# e o valor é a forma padronizada que será gravada na tarefa.
+PRIORIDADES_VALIDAS = {
+    "alta": "Alta",
+    "média": "Média",
+    "media": "Média",
+    "baixa": "Baixa",
+}
+
 STATUS_INICIAL = "Pendente"
+
+
+# ---------------------------------------------------------------------------
+# Funções de validação (regras de negócio)
+# ---------------------------------------------------------------------------
+
+def ler_titulo():
+    """Solicita o título até que seja informado um valor não vazio."""
+    while True:
+        titulo = input("Título da tarefa: ").strip()
+        if titulo:
+            return titulo
+        print("[ERRO] O título é obrigatório e não pode ficar vazio. Tente novamente.\n")
+
+
+def ler_prioridade():
+    """Solicita a prioridade até que seja informada uma opção válida."""
+    while True:
+        entrada = input("Prioridade (Alta / Média / Baixa): ").strip().lower()
+        if entrada in PRIORIDADES_VALIDAS:
+            return PRIORIDADES_VALIDAS[entrada]
+        print("[ERRO] Prioridade inválida. Digite apenas Alta, Média (ou Media) ou Baixa.\n")
 
 
 # ---------------------------------------------------------------------------
@@ -19,11 +53,11 @@ STATUS_INICIAL = "Pendente"
 # ---------------------------------------------------------------------------
 
 def cadastrar_tarefa():
-    """Coleta os dados e adiciona a tarefa na lista."""
+    """Coleta os dados, aplica as validações e adiciona a tarefa na lista."""
     print("\n--- CADASTRAR NOVA TAREFA ---")
-    titulo = input("Título da tarefa: ").strip()
+    titulo = ler_titulo()
     descricao = input("Descrição: ").strip()
-    prioridade = input("Prioridade (Alta / Média / Baixa): ").strip()
+    prioridade = ler_prioridade()
     data_limite = input("Data limite (DD/MM/AAAA): ").strip()
 
     tarefa = {
