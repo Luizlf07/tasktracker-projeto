@@ -2,15 +2,17 @@
 
 Aplicação de linha de comando (CLI) em Python para cadastro e visualização de tarefas, desenvolvida na **Fase 2 (Entrega Intermediária)** do **Bootcamp II**.
 
-**Autor:** Luiz Felipe Cunha · Curso de Desenvolvimento de Software
+**Autor:** Luiz Felipe Rocha  
+**RA:** 22604023  
+**Curso:** Desenvolvimento de Software
 
 ## Descrição funcional
 
 O TaskTracker oferece um menu contínuo no terminal com três opções:
 
-1. **Cadastrar nova tarefa** — registra título, descrição, prioridade e data limite.
-2. **Visualizar tarefas cadastradas** — lista todas as tarefas com suas propriedades.
-3. **Sair da aplicação** — encerra o programa.
+1. **Cadastrar nova tarefa**: registra título, descrição, prioridade e data limite.
+2. **Visualizar tarefas cadastradas**: lista todas as tarefas com suas propriedades.
+3. **Sair da aplicação**: encerra o programa.
 
 ### Estrutura de cada tarefa
 
@@ -77,7 +79,7 @@ python src/main.py
 3. Sair da aplicação
 Escolha uma opção: 1
 
---- CADASTRAR NOVA TAREFA ---
+=== CADASTRAR NOVA TAREFA ===
 Título da tarefa:
 [ERRO] O título é obrigatório e não pode ficar vazio. Tente novamente.
 
